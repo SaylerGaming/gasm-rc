@@ -31,9 +31,9 @@
         
         <button type="submit">отправить заявку</button>
     </form>
-
-    <!-- <form action="/send/assembly" method="post" style="display:flex; flex-direction:column; width:30%; margin-left: 35%">
-        <h2>Сборка ПК</h2>
+    <br><br><br>
+    <form action="/send/door-to-door" method="post" style="display:flex; flex-direction:column; width:30%; margin-left: 35%">
+        <h2>Работа на дому</h2>
         @csrf
         <input type="text" name="name" placeholder="ФИО">
         <input type="text" name="phone" placeholder="телефон">
@@ -45,17 +45,19 @@
         <input type="radio" id="Call" name="contact" value="Call" checked />
         <label for="Call">Call</label>
         
-        <textarea name="tasks" cols="30" rows="10" placeholder="Задачи компьютера"></textarea>
+        <textarea name="desciption" cols="30" rows="10" placeholder="Описание проблемы"></textarea>
         
-        <input type="number" name="price" placeholder="Цена до скольки">
-        <input type="number" name="quantity" placeholder="Количество" value="1">
+        <label>Удобное время</label>
+        <input type="text" name="timeDay" placeholder="День">
+        <input type="text" name="timeFrom" placeholder="С:">
+        <input type="text" name="timeTo" placeholder="До:">
 
-        <input type="radio" id="pickup" name="delivery" value="Самовывоз" checked/>
-        <label for="pickup">Самовывоз</label>
-        <input type="radio" id="delivery" name="delivery" value="Доставка"/>
-        <label for="delivery">Доставка</label>
+        <input type="checkbox" name="isImmediately" value="1"/>
+        <label for="pickup">Срочно</label>
+
+        <input type="text" name="address" placeholder="Адрес">
         
         <button type="submit">отправить заявку</button>
-    </form> -->
+    </form>
 </body>
 </html>

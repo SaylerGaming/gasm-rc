@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AssemblyMail extends Mailable
+class DoorToDoorMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -24,10 +24,14 @@ class AssemblyMail extends Mailable
     /**
      * Get the message envelope.
      */
-    public function envelope(): Envelope
+    public function envelope(array $data): Envelope
     {
+        $string = 'Новая заявка: Работа на дому';
+        if($data['isImmediately']) {
+            $string = 'Срочно! '.$string;
+        }
         return new Envelope(
-            subject: 'Новая заявка: Сборка ПК',
+            subject: $string,
         );
     }
 
@@ -37,7 +41,7 @@ class AssemblyMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.assembly',
+            view: 'mail.doorToDoor',
             with: [
                 'data' => $this->data
             ]

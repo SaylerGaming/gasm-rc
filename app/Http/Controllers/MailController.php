@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
-use App\Mail\AssemblyMail;
+use App\Mail\{
+    AssemblyMail,
+    doorToDoorMail   
+};
 
 class MailController extends Controller
 {
@@ -21,7 +24,24 @@ class MailController extends Controller
             'delivery' => $request->delivery,
         ];
 
-        Mail::to('saylerplay@gmail.com')->send(new AssemblyMail($data));
+        Mail::to('pc.assembly@gasmrc.kz')->send(new AssemblyMail($data));
+
+        return redirect('/');
+    }
+    public function sendDoorToDoorMail(Request $request){
+        $data = [
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'contact' => $request->contact,
+            'description' => $request->description,
+            'timeDay' => $request->timeDay,
+            'timeFrom' => $request->timeFrom,
+            'timeTo' => $request->timeTo,
+            'isImmediately' => $request->isImmediately,
+            'address' => $request->address,
+        ];
+
+        Mail::to('home.visit@gasmrc.kz')->send(new DoorToDoorMail($data));
 
         return redirect('/');
     }

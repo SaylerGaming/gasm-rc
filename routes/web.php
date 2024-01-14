@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::post('/send/assembly', [MailController::class, 'sendAssemblyMail']);
+Route::post('/send/door-to-door', [MailController::class, 'sendDoorToDoorMail']);
