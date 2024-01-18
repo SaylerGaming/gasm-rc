@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\MailController;
+use App\Http\Controllers\{
+    MailController,
+    DataBaseController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +24,11 @@ Route::get('/', function () {
 
 Route::post('/send/assembly', [MailController::class, 'sendAssemblyMail']);
 Route::post('/send/door-to-door', [MailController::class, 'sendDoorToDoorMail']);
+
+Route::get('/al-style/get-product/{id}', [DataBaseController::class, 'getAlStyle']);
+Route::get('/al-style/get-categories', [DataBaseController::class, 'getCategories']);
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
